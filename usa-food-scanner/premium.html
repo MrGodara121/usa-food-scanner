@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Plans - USA Food Scanner</title>
+    <meta name="description" content="Upgrade to Premium for unlimited scans, 84+ micronutrients, adaptive algorithm, AI photo scan, voice search, and weekly coaching">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#4CAF50">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/mobile.css">
+</head>
+<body>
+    <div id="app">
+        <header class="glass-header" id="header">
+            <div class="logo">
+                <span class="logo-icon">🍏</span>
+                <span class="logo-text">FoodScan</span>
+            </div>
+            <nav class="desktop-nav" id="desktop-nav"></nav>
+            <div class="header-right">
+                <div id="user-menu" class="user-menu"></div>
+                <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+            </div>
+        </header>
+        <div class="mobile-nav" id="mobile-nav"></div>
+
+        <main id="main-content">
+            <div class="container">
+                <!-- Premium Header -->
+                <div class="premium-header">
+                    <h1>✨ Unlock All Premium Features</h1>
+                    <p>Get unlimited scans, 84+ micronutrients, adaptive algorithm, AI photo scan, voice search, and weekly coaching</p>
+                </div>
+                
+                <!-- Premium Plans Grid -->
+                <div id="plans-grid" class="plans-grid"></div>
+                
+                <!-- Feature Comparison -->
+                <section class="feature-comparison">
+                    <h2>Compare Features</h2>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Free</th>
+                                <th>Pro</th>
+                                <th>Family</th>
+                                <th>Business</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Monthly Scans</td>
+                                <td>50</td>
+                                <td>Unlimited</td>
+                                <td>Unlimited</td>
+                                <td>Unlimited</td>
+                            </tr>
+                            <tr>
+                                <td>Basic Analysis</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                            </tr>
+                            <tr>
+                                <td>84+ Micronutrients</td>
+                                <td>✗</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                            </tr>
+                            <tr>
+                                <td>AI Photo Scan</td>
+                                <td>✗</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                            </tr>
+                            <tr>
+                                <td>Voice Search</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                            </tr>
+                            <tr>
+                                <td>Adaptive Algorithm</td>
+                                <td>✗</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                            </tr>
+                            <tr>
+                                <td>Weekly Coaching</td>
+                                <td>✗</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                            </tr>
+                            <tr>
+                                <td>PDF Reports</td>
+                                <td>✗</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                            </tr>
+                            <tr>
+                                <td>API Access</td>
+                                <td>✗</td>
+                                <td>✗</td>
+                                <td>✗</td>
+                                <td>✓</td>
+                            </tr>
+                            <tr>
+                                <td>Users</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>5</td>
+                                <td>Unlimited</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                
+                <!-- Enterprise Section -->
+                <div class="enterprise-section">
+                    <h2>🏢 Need a Custom Plan for Your Business?</h2>
+                    <p>Contact us for enterprise solutions with dedicated API access, custom reports, and 24/7 support</p>
+                    <a href="/contact" class="btn-secondary">Contact Sales</a>
+                </div>
+                
+                <!-- FAQ Section -->
+                <div class="premium-faq">
+                    <h2>Frequently Asked Questions</h2>
+                    <div id="premium-faq" class="faq-grid"></div>
+                </div>
+            </div>
+        </main>
+
+        <footer id="footer" class="footer"></footer>
+    </div>
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>
