@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Products - USA Food Scanner</title>
-    <meta name="description" content="Search thousands of food products with health scores, micronutrients, and voice search">
+    <meta name="description" content="Search thousands of food products with health scores and nutrition data">
     
     <!-- PWA -->
     <link rel="manifest" href="/manifest.json">
@@ -16,17 +16,7 @@
 </head>
 <body>
     <div id="app">
-        <header class="glass-header" id="header">
-            <div class="logo">
-                <span class="logo-icon">🍏</span>
-                <span class="logo-text">FoodScan</span>
-            </div>
-            <nav class="desktop-nav" id="desktop-nav"></nav>
-            <div class="header-right">
-                <div id="user-menu" class="user-menu"></div>
-                <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
-            </div>
-        </header>
+        <header class="glass-header" id="header"></header>
         <div class="mobile-nav" id="mobile-nav"></div>
 
         <main id="main-content">
@@ -36,37 +26,32 @@
                     <h1>Search Products</h1>
                     
                     <!-- Search Form -->
-                    <form id="search-form" class="search-form" onsubmit="return false;">
+                    <form id="search-form" class="search-form" onsubmit="event.preventDefault(); performSearch();">
                         <div class="search-wrapper">
                             <input type="search" id="search-input" placeholder="Search products, brands, ingredients..." autocomplete="off">
-                            <button type="button" onclick="startVoiceSearch()" class="voice-btn" title="Voice Search">🎤</button>
-                            <button type="submit" onclick="performSearch()">🔍</button>
+                            <button type="button" onclick="startVoiceSearch()" class="voice-btn" aria-label="Voice Search">🎤</button>
+                            <button type="submit" aria-label="Search">🔍</button>
                         </div>
                         
                         <!-- Search Filters -->
                         <div class="search-filters">
-                            <label class="filter-option">
-                                <input type="radio" name="type" value="all" checked> All
+                            <label>
+                                <input type="radio" name="type" value="all" checked onchange="performSearch()"> All
                             </label>
-                            <label class="filter-option">
-                                <input type="radio" name="type" value="products"> Products
+                            <label>
+                                <input type="radio" name="type" value="products" onchange="performSearch()"> Products
                             </label>
-                            <label class="filter-option">
-                                <input type="radio" name="type" value="categories"> Categories
+                            <label>
+                                <input type="radio" name="type" value="categories" onchange="performSearch()"> Categories
                             </label>
-                            <label class="filter-option">
-                                <input type="radio" name="type" value="ingredients"> Ingredients
+                            <label>
+                                <input type="radio" name="type" value="ingredients" onchange="performSearch()"> Ingredients
                             </label>
-                            <label class="filter-option">
-                                <input type="radio" name="type" value="blog"> Blog
+                            <label>
+                                <input type="radio" name="type" value="blog" onchange="performSearch()"> Blog
                             </label>
                         </div>
                     </form>
-                </div>
-                
-                <!-- Voice Search Status -->
-                <div id="voice-status" class="voice-status" style="display: none;">
-                    🎤 Listening... Speak now
                 </div>
                 
                 <!-- Search Results -->
