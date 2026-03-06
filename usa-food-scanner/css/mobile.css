@@ -1,0 +1,671 @@
+/* Mobile-Specific Styles */
+
+@media (max-width: 480px) {
+    /* Typography */
+    html {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 1.75rem !important;
+    }
+
+    h2 {
+        font-size: 1.5rem !important;
+    }
+
+    /* Header */
+    .glass-header {
+        padding: 0 1rem;
+    }
+
+    .logo {
+        font-size: 1.25rem;
+    }
+
+    .logo-text {
+        display: none;
+    }
+
+    .user-name {
+        padding: 0.25rem 0.75rem;
+        font-size: 0.875rem;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 2rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .btn-large {
+        width: 100%;
+        padding: 0.875rem;
+    }
+
+    /* Trust Badges */
+    .trust-badges {
+        gap: 0.5rem;
+    }
+
+    .badge {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.7rem;
+    }
+
+    .badge-icon {
+        font-size: 0.9rem;
+    }
+
+    /* Grids */
+    .categories-grid,
+    .products-grid,
+    .alternatives-grid,
+    .related-articles-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+    }
+
+    /* Cards */
+    .category-card h3 {
+        font-size: 1rem;
+        padding: 0.75rem;
+    }
+
+    .product-image {
+        height: 180px;
+    }
+
+    .product-info {
+        padding: 0.75rem;
+    }
+
+    .product-info h3 {
+        font-size: 1rem;
+    }
+
+    .product-brand {
+        font-size: 0.75rem;
+    }
+
+    .product-meta {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    /* AI Demo Section */
+    .ai-demo-card,
+    .voice-demo-card {
+        padding: 2rem 1rem;
+    }
+
+    .ai-demo-content p,
+    .voice-demo-content p {
+        font-size: 1rem;
+    }
+
+    /* Challenge Card */
+    .challenge-card {
+        padding: 1.5rem;
+    }
+
+    .challenge-card h3 {
+        font-size: 1.25rem;
+    }
+
+    /* CTA Section */
+    .cta-section {
+        padding: 2rem 1rem;
+    }
+
+    .cta-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .cta-features {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .cta-features span {
+        width: 100%;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 2rem 1rem 1rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .footer-col h4 {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .footer-col li {
+        margin-bottom: 0.5rem;
+    }
+
+    .social-links {
+        gap: 0.75rem;
+    }
+
+    .social-links a {
+        width: 32px;
+        height: 32px;
+    }
+
+    .social-links img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .footer-bottom {
+        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+        font-size: 0.75rem;
+    }
+
+    /* Toast */
+    .toast {
+        left: 1rem;
+        right: 1rem;
+        transform: none;
+        max-width: none;
+        padding: 0.75rem 1rem;
+        font-size: 0.875rem;
+    }
+
+    .toast.show {
+        transform: none;
+    }
+
+    /* Notification Prompt */
+    .notification-prompt {
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        max-width: none;
+    }
+
+    .prompt-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+        padding: 0.75rem;
+    }
+
+    .prompt-icon {
+        font-size: 1.5rem;
+    }
+
+    .prompt-actions {
+        width: 100%;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .prompt-actions button {
+        width: 100%;
+    }
+
+    /* Auth Forms */
+    .auth-container {
+        margin: 1rem;
+    }
+
+    .auth-form {
+        padding: 1.5rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 0.5rem;
+    }
+
+    .btn-google {
+        padding: 0.5rem;
+    }
+
+    /* Dashboard */
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+
+    .stat-card {
+        padding: 1rem;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
+    }
+
+    .adaptive-card,
+    .coaching-card,
+    .recent-scans,
+    .shopping-list-section,
+    .account-settings {
+        padding: 1.5rem;
+    }
+
+    .adaptive-content {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .calorie-recommendation {
+        padding: 0.75rem;
+    }
+
+    .rec-value {
+        font-size: 1.5rem;
+    }
+
+    .weight-input {
+        flex-direction: column;
+    }
+
+    .weight-input input {
+        width: 100%;
+    }
+
+    .coaching-content h4 {
+        font-size: 1.25rem;
+    }
+
+    .coaching-tip {
+        padding: 0.75rem;
+        font-size: 0.875rem;
+    }
+
+    .settings-grid {
+        gap: 0.75rem;
+    }
+
+    .setting-item {
+        padding: 0.75rem;
+    }
+
+    /* Search Page */
+    .search-wrapper {
+        padding: 0.25rem 0.25rem 0.25rem 0.75rem;
+    }
+
+    .search-wrapper input {
+        padding: 0.5rem 0;
+        font-size: 0.875rem;
+    }
+
+    .search-wrapper button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .search-filters {
+        gap: 0.5rem;
+    }
+
+    .filter-option {
+        font-size: 0.75rem;
+    }
+
+    /* Product Page */
+    .product-header {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .product-info-large h1 {
+        font-size: 1.5rem;
+    }
+
+    .product-brand-large {
+        font-size: 1rem;
+    }
+
+    .score-display {
+        gap: 1rem;
+    }
+
+    .score-circle-large {
+        width: 80px;
+        height: 80px;
+    }
+
+    .score-grade {
+        font-size: 1.5rem;
+    }
+
+    .product-actions-bar {
+        margin: 1rem 0;
+    }
+
+    .product-actions-bar button {
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .product-tabs {
+        gap: 0.25rem;
+    }
+
+    .tab-btn {
+        padding: 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .ingredients-section,
+    .macros-section,
+    .vitamins-section,
+    .minerals-section,
+    .alternatives-section,
+    .reviews-section,
+    .related-articles {
+        padding: 1rem;
+    }
+
+    .ingredient-item {
+        padding: 0.75rem;
+    }
+
+    .ingredient-icon {
+        width: 24px;
+        font-size: 1rem;
+        margin-right: 0.75rem;
+    }
+
+    .ingredient-name {
+        font-size: 0.875rem;
+    }
+
+    .ingredient-desc {
+        font-size: 0.75rem;
+    }
+
+    .ingredient-badge {
+        padding: 0.125rem 0.5rem;
+        font-size: 0.625rem;
+    }
+
+    .macro-item {
+        padding: 1rem;
+    }
+
+    .macro-value {
+        font-size: 1.25rem;
+    }
+
+    .nutrient-item {
+        padding: 0.75rem;
+    }
+
+    .nutrient-name {
+        font-size: 0.875rem;
+    }
+
+    .nutrient-value {
+        font-size: 0.875rem;
+    }
+
+    .alternative-info {
+        padding: 0.75rem;
+    }
+
+    .alternative-name {
+        font-size: 0.875rem;
+    }
+
+    .review-item {
+        padding: 1rem;
+    }
+
+    .review-rating {
+        font-size: 1rem;
+    }
+
+    .lock-content {
+        padding: 1.5rem;
+        margin: 0 1rem;
+    }
+
+    .lock-icon {
+        font-size: 3rem;
+    }
+
+    .lock-content h3 {
+        font-size: 1.25rem;
+    }
+
+    /* Category Page */
+    .category-header {
+        padding: 1.5rem;
+    }
+
+    .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+
+    .filter-select {
+        width: 100%;
+    }
+
+    .score-filters {
+        flex-wrap: wrap;
+    }
+
+    .filter-btn {
+        flex: 1;
+        min-width: calc(50% - 0.25rem);
+        font-size: 0.75rem;
+        padding: 0.5rem;
+    }
+
+    .pagination {
+        flex-wrap: wrap;
+    }
+
+    .page-link {
+        padding: 0.375rem 0.75rem;
+        font-size: 0.875rem;
+    }
+
+    /* API Docs */
+    .api-plans {
+        margin: 2rem 0;
+    }
+
+    .plans-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .plan-card {
+        padding: 1.5rem;
+    }
+
+    .plan-card.popular {
+        transform: none;
+    }
+
+    .plan-price {
+        font-size: 2rem;
+    }
+
+    .endpoint {
+        padding: 1.5rem;
+    }
+
+    .endpoint h3 {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .endpoint pre {
+        padding: 1rem;
+        font-size: 0.875rem;
+    }
+
+    .sdk-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .calculator {
+        padding: 1.5rem;
+    }
+
+    .comparison-table {
+        font-size: 0.875rem;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+        padding: 0.75rem 0.5rem;
+    }
+
+    .enterprise-section {
+        padding: 2rem 1rem;
+    }
+
+    /* Premium Page */
+    .premium-header {
+        padding: 2rem 0;
+    }
+
+    .premium-header h1 {
+        font-size: 2rem;
+    }
+
+    .feature-comparison {
+        padding: 1.5rem;
+    }
+
+    .premium-faq {
+        padding: 1.5rem;
+    }
+
+    .faq-item {
+        padding-bottom: 1rem;
+    }
+
+    /* Error Page */
+    .error-container {
+        padding: 2rem 1rem;
+    }
+
+    .error-code {
+        font-size: 5rem;
+    }
+
+    .error-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .error-actions .btn {
+        width: 100%;
+    }
+
+    .popular-pages {
+        max-width: 100%;
+    }
+}
+
+/* Small Phones */
+@media (max-width: 360px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .score-filters {
+        flex-direction: column;
+    }
+
+    .filter-btn {
+        width: 100%;
+    }
+
+    .nutrient-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-tabs {
+        flex-direction: column;
+    }
+
+    .tab-btn {
+        width: 100%;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+    .btn-primary,
+    .btn-secondary,
+    .btn-danger,
+    .filter-btn,
+    .tab-btn,
+    .page-link,
+    .nav-menu a,
+    .footer-col a {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    input,
+    select,
+    textarea {
+        font-size: 16px !important; /* Prevents zoom on iOS */
+    }
+
+    .mobile-nav a {
+        padding: 1rem;
+    }
+
+    .mobile-menu-btn {
+        width: 44px;
+        height: 44px;
+    }
+
+    .product-card,
+    .category-card,
+    .alternative-card,
+    .related-article-card {
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .product-card:active,
+    .category-card:active,
+    .alternative-card:active,
+    .related-article-card:active {
+        transform: scale(0.98);
+    }
+}
