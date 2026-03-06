@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard - USA Food Scanner</title>
+    <meta name="description" content="View your scan history, health statistics, adaptive algorithm results, and weekly coaching">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#4CAF50">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/mobile.css">
+    
+    <!-- Chart.js for weight tracking -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header class="glass-header" id="header">
+            <div class="logo">
+                <span class="logo-icon">🍏</span>
+                <span class="logo-text">FoodScan</span>
+            </div>
+            <nav class="desktop-nav" id="desktop-nav"></nav>
+            <div class="header-right">
+                <div id="user-menu" class="user-menu"></div>
+                <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+            </div>
+        </header>
+        <div class="mobile-nav" id="mobile-nav"></div>
+
+        <main id="main-content">
+            <div class="container">
+                <h1>My Dashboard</h1>
+                
+                <!-- Stats Cards -->
+                <div class="stats-grid" id="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="total-scans">0</div>
+                        <div class="stat-label">Total Scans</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="avg-score">0</div>
+                        <div class="stat-label">Avg Health Score</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="member-since">-</div>
+                        <div class="stat-label">Member Since</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="plan">Free</div>
+                        <div class="stat-label">Current Plan</div>
+                    </div>
+                </div>
+                
+                <!-- Adaptive Algorithm Card -->
+                <div class="adaptive-card">
+                    <h3>📊 Adaptive Algorithm</h3>
+                    <div class="adaptive-content">
+                        <div class="adaptive-info">
+                            <p>Based on your last 30 days weight trend:</p>
+                            <div class="calorie-recommendation">
+                                <span class="rec-label">Recommended Daily Calories:</span>
+                                <span class="rec-value" id="rec-calories">2,150</span>
+                            </div>
+                            <div class="trend-indicator" id="trend-indicator">
+                                <span class="trend-icon">📉</span>
+                                <span>Losing 0.5 lbs/week</span>
+                            </div>
+                        </div>
+                        <div class="weight-chart-container">
+                            <canvas id="weight-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="weight-input">
+                        <input type="number" id="weight-input" placeholder="Enter today's weight (lbs)" step="0.1">
+                        <button onclick="logWeight()" class="btn-small">Log Weight</button>
+                    </div>
+                </div>
+                
+                <!-- Weekly Coaching Card -->
+                <div class="coaching-card">
+                    <h3>💪 Weekly Coaching</h3>
+                    <div id="todays-coaching" class="coaching-content">
+                        <div class="coaching-day">Day 15 of 30</div>
+                        <h4 id="coaching-title">Mindful Eating Basics</h4>
+                        <p id="coaching-content">Learn to recognize true hunger vs emotional eating...</p>
+                        <div class="coaching-progress">
+                            <div class="progress-bar" id="coaching-progress" style="width: 50%"></div>
+                        </div>
+                        <div class="coaching-tip" id="coaching-tip">
+                            💡 Tip: Try eating without your phone today
+                        </div>
+                        <button onclick="markCoachingComplete()" class="btn-primary btn-small">
+                            ✓ Mark as Complete
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- API Key Section (for Business Users) -->
+                <div id="api-section" class="api-section" style="display: none;">
+                    <h3>🔑 Your API Key</h3>
+                    <div class="api-key-box">
+                        <code id="api-key-display">fsc_xxxxx...</code>
+                        <button onclick="copyApiKey()" class="btn-small">Copy</button>
+                    </div>
+                    <div class="api-stats">
+                        <span>Calls Used: <span id="api-calls-used">0</span>/<span id="api-calls-limit">1000</span></span>
+                        <a href="/api-docs" class="docs-link">View API Docs →</a>
+                    </div>
+                </div>
+                
+                <!-- Recent Scans -->
+                <section class="recent-scans">
+                    <h3>Recent Scans</h3>
+                    <div id="recent-scans" class="scans-list"></div>
+                    <button onclick="loadMoreScans()" class="btn-secondary btn-block" id="load-more">Load More</button>
+                </section>
+                
+                <!-- Shopping List -->
+                <section class="shopping-list-section">
+                    <h3>🛒 My Shopping List</h3>
+                    <div id="shopping-list" class="shopping-list"></div>
+                    <button onclick="clearShoppingList()" class="btn-secondary btn-small">Clear List</button>
+                </section>
+                
+                <!-- Account Settings -->
+                <section class="account-settings">
+                    <h3>Account Settings</h3>
+                    <div class="settings-grid">
+                        <div class="setting-item">
+                            <span>Email Notifications</span>
+                            <label class="switch">
+                                <input type="checkbox" id="email-notifications">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <span>Push Notifications</span>
+                            <label class="switch">
+                                <input type="checkbox" id="push-notifications">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <span>Dark Mode</span>
+                            <label class="switch">
+                                <input type="checkbox" id="dark-mode">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <span>Delete Account</span>
+                            <button onclick="deleteAccount()" class="btn-danger btn-small">Delete</button>
+                        </div>
+                        <div class="setting-item">
+                            <span>Logout</span>
+                            <button onclick="logout()" class="btn-secondary btn-small">Logout</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer id="footer" class="footer"></footer>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>
