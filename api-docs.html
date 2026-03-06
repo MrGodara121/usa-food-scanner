@@ -104,4 +104,45 @@
                     </div>
                     
                     <div class="endpoint">
-                        <h3><span class="method get">GET</span> /api/adaptive-calories?
+                        <h3><span class="method get">GET</span> /api/adaptive-calories?user_id={userId}</h3>
+                        <p>Get personalized calorie recommendations based on weight trends</p>
+                    </div>
+                    
+                    <div class="endpoint">
+                        <h3><span class="method post">POST</span> /api/image-scan</h3>
+                        <p>Upload a photo of food to identify product</p>
+                        <h4>Form Data:</h4>
+                        <ul>
+                            <li><code>image</code> - image file (jpeg/png)</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Pricing Calculator -->
+                <section class="api-section">
+                    <h2>Pricing Calculator</h2>
+                    <div class="calculator">
+                        <label for="api-calls">Calls per month:</label>
+                        <input type="number" id="api-calls" value="10000" min="1000" step="1000">
+                        <div id="price-display" class="price-display">Estimated Price: $49/month</div>
+                    </div>
+                </section>
+                
+                <!-- Get API Key -->
+                <section class="cta-section">
+                    <h2>Ready to get started?</h2>
+                    <p>Get your API key today and start integrating</p>
+                    <a href="/premium?plan=business" class="btn-primary">Get API Key →</a>
+                </section>
+            </div>
+        </main>
+
+        <footer id="footer" class="footer"></footer>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/app.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>
