@@ -1,0 +1,687 @@
+/* Product Page Specific Styles */
+
+/* Breadcrumbs */
+.breadcrumbs {
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+}
+
+.breadcrumbs ol {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.breadcrumbs li {
+    color: var(--gray-600);
+}
+
+.breadcrumbs li:not(:last-child)::after {
+    content: "/";
+    margin-left: 0.5rem;
+    color: var(--gray-400);
+}
+
+.breadcrumbs a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+/* Product Header */
+.product-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 2rem;
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+}
+
+.product-image-large {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    aspect-ratio: 1;
+}
+
+.product-image-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-info-large h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--gray-800);
+}
+
+.product-brand-large {
+    font-size: 1.125rem;
+    color: var(--gray-600);
+    margin-bottom: 2rem;
+}
+
+/* Score Display */
+.score-display {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.score-circle-large {
+    width: 120px;
+    height: 120px;
+    position: relative;
+}
+
+.score-details {
+    flex: 1;
+}
+
+.score-grade {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.score-label {
+    color: var(--gray-600);
+    margin-bottom: 0.5rem;
+}
+
+.score-bar {
+    height: 8px;
+    background: var(--gray-200);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.score-bar-fill {
+    height: 100%;
+    background: var(--primary);
+    border-radius: var(--radius-full);
+    transition: width 1s ease;
+}
+
+.score-text {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+}
+
+/* Premium Lock */
+.premium-lock {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.lock-content {
+    background: white;
+    padding: 3rem;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    max-width: 400px;
+    margin: 0 1rem;
+    animation: scaleIn 0.3s ease;
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.lock-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.lock-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--gray-800);
+}
+
+.lock-content p {
+    color: var(--gray-600);
+    margin-bottom: 2rem;
+}
+
+/* Ingredients Section */
+.ingredients-section,
+.macros-section,
+.vitamins-section,
+.minerals-section,
+.alternatives-section,
+.reviews-section,
+.related-articles {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-md);
+}
+
+.ingredients-section h2,
+.macros-section h2,
+.vitamins-section h2,
+.minerals-section h2,
+.alternatives-section h2,
+.reviews-section h2,
+.related-articles h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--gray-800);
+}
+
+.ingredients-list {
+    list-style: none;
+}
+
+.ingredient-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--gray-200);
+    transition: var(--transition-base);
+}
+
+.ingredient-item:last-child {
+    border-bottom: none;
+}
+
+.ingredient-item.healthy {
+    background: rgba(76, 175, 80, 0.05);
+}
+
+.ingredient-item.warning {
+    background: rgba(255, 152, 0, 0.05);
+}
+
+.ingredient-item.harmful {
+    background: rgba(244, 67, 54, 0.05);
+}
+
+.ingredient-icon {
+    width: 32px;
+    text-align: center;
+    font-size: 1.25rem;
+    margin-right: 1rem;
+}
+
+.ingredient-info {
+    flex: 1;
+}
+
+.ingredient-name {
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 0.25rem;
+}
+
+.ingredient-desc {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+}
+
+.ingredient-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-left: 1rem;
+}
+
+.ingredient-badge.healthy {
+    background: var(--primary-light);
+    color: var(--primary-dark);
+}
+
+.ingredient-badge.warning {
+    background: #fff3e0;
+    color: var(--warning);
+}
+
+.ingredient-badge.harmful {
+    background: #ffebee;
+    color: var(--danger);
+}
+
+/* Macros Section */
+.macros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.macro-item {
+    background: var(--gray-50);
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    text-align: center;
+}
+
+.macro-label {
+    display: block;
+    color: var(--gray-600);
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.macro-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+/* Nutrient Grid (Vitamins & Minerals) */
+.nutrient-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.nutrient-item {
+    background: var(--gray-50);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nutrient-name {
+    font-weight: 500;
+    color: var(--gray-700);
+}
+
+.nutrient-value {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* Alternatives Section */
+.alternatives-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.alternative-card {
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: var(--transition-base);
+    cursor: pointer;
+}
+
+.alternative-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.alternative-image {
+    height: 150px;
+    overflow: hidden;
+}
+
+.alternative-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-base);
+}
+
+.alternative-card:hover .alternative-image img {
+    transform: scale(1.05);
+}
+
+.alternative-info {
+    padding: 1rem;
+}
+
+.alternative-name {
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 0.25rem;
+}
+
+.alternative-brand {
+    font-size: 0.75rem;
+    color: var(--gray-600);
+    margin-bottom: 0.5rem;
+}
+
+.alternative-score {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.alternative-score.high {
+    background: #4CAF50;
+    color: white;
+}
+
+.alternative-score.medium {
+    background: #FFC107;
+    color: var(--gray-900);
+}
+
+.alternative-score.low {
+    background: #F44336;
+    color: white;
+}
+
+/* Reviews Section */
+.review-item {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.review-item:last-child {
+    border-bottom: none;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.reviewer-name {
+    font-weight: 600;
+    color: var(--gray-800);
+}
+
+.review-date {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+}
+
+.review-rating {
+    color: #FFC107;
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+}
+
+.review-text {
+    color: var(--gray-700);
+    line-height: 1.6;
+}
+
+.review-helpful {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-helpful {
+    background: none;
+    border: 1px solid var(--gray-300);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: var(--transition-base);
+}
+
+.btn-helpful:hover {
+    background: var(--gray-100);
+    border-color: var(--gray-400);
+}
+
+/* Related Articles */
+.related-articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.related-article-card {
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-base);
+}
+
+.related-article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.related-article-image {
+    height: 150px;
+    overflow: hidden;
+}
+
+.related-article-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-base);
+}
+
+.related-article-card:hover .related-article-image img {
+    transform: scale(1.05);
+}
+
+.related-article-content {
+    padding: 1rem;
+}
+
+.related-article-content h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--gray-800);
+}
+
+.related-article-content p {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    margin-bottom: 0.5rem;
+}
+
+.related-article-meta {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .product-header {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+
+    .score-display {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .product-actions-bar {
+        flex-direction: column;
+    }
+
+    .product-actions-bar button {
+        width: 100%;
+    }
+
+    .product-tabs {
+        justify-content: center;
+    }
+
+    .tab-btn {
+        flex: 1;
+        padding: 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    .nutrient-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .lock-content {
+        padding: 2rem;
+    }
+
+    .lock-content h3 {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nutrient-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .alternatives-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .related-articles-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    .product-header,
+    .ingredients-section,
+    .macros-section,
+    .vitamins-section,
+    .minerals-section,
+    .alternatives-section,
+    .reviews-section,
+    .related-articles {
+        background: var(--gray-800);
+    }
+
+    .product-info-large h1 {
+        color: white;
+    }
+
+    .product-brand-large {
+        color: var(--gray-400);
+    }
+
+    .score-label {
+        color: var(--gray-400);
+    }
+
+    .score-bar {
+        background: var(--gray-700);
+    }
+
+    .score-text {
+        color: var(--gray-400);
+    }
+
+    .ingredient-item {
+        border-bottom-color: var(--gray-700);
+    }
+
+    .ingredient-name {
+        color: white;
+    }
+
+    .ingredient-desc {
+        color: var(--gray-400);
+    }
+
+    .macro-item,
+    .nutrient-item,
+    .alternative-card,
+    .related-article-card {
+        background: var(--gray-700);
+    }
+
+    .macro-label {
+        color: var(--gray-300);
+    }
+
+    .macro-value {
+        color: var(--primary-light);
+    }
+
+    .nutrient-name {
+        color: white;
+    }
+
+    .alternative-name {
+        color: white;
+    }
+
+    .alternative-brand {
+        color: var(--gray-400);
+    }
+
+    .review-item {
+        border-bottom-color: var(--gray-700);
+    }
+
+    .reviewer-name {
+        color: white;
+    }
+
+    .review-text {
+        color: var(--gray-300);
+    }
+
+    .btn-helpful {
+        border-color: var(--gray-600);
+        color: white;
+    }
+
+    .btn-helpful:hover {
+        background: var(--gray-600);
+    }
+
+    .related-article-content h4 {
+        color: white;
+    }
+
+    .related-article-content p {
+        color: var(--gray-300);
+    }
+
+    .lock-content {
+        background: var(--gray-800);
+    }
+
+    .lock-content h3 {
+        color: white;
+    }
+
+    .lock-content p {
+        color: var(--gray-300);
+    }
+}
