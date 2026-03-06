@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="product-title">Product Details - USA Food Scanner</title>
+    <meta name="description" id="product-description" content="Check product health score, ingredients, and 84+ micronutrients">
+    <link rel="canonical" href="" id="canonical-url">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" id="og-title" content="">
+    <meta property="og:description" id="og-description" content="">
+    <meta property="og:image" id="og-image" content="">
+    <meta property="og:url" id="og-url" content="">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#4CAF50">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/product.css">
+    <link rel="stylesheet" href="/css/mobile.css">
+</head>
+<body>
+    <div id="app">
+        <header class="glass-header" id="header">
+            <div class="logo">
+                <span class="logo-icon">🍏</span>
+                <span class="logo-text">FoodScan</span>
+            </div>
+            <nav class="desktop-nav" id="desktop-nav"></nav>
+            <div class="header-right">
+                <div id="user-menu" class="user-menu"></div>
+                <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+            </div>
+        </header>
+        <div class="mobile-nav" id="mobile-nav"></div>
+
+        <main id="main-content">
+            <div class="container">
+                <!-- Breadcrumbs -->
+                <nav class="breadcrumbs" id="breadcrumbs"></nav>
+                
+                <!-- Product Header -->
+                <div class="product-header" id="product-header"></div>
+                
+                <!-- Product Actions -->
+                <div class="product-actions-bar">
+                    <button class="btn-wishlist" onclick="toggleWishlist()">
+                        ♥ Add to Wishlist
+                    </button>
+                    <button class="btn-compare" onclick="addToCompare()">
+                        ⇄ Compare
+                    </button>
+                    <button class="btn-share" onclick="shareProduct()">
+                        📤 Share
+                    </button>
+                </div>
+                
+                <!-- Tabs -->
+                <div class="product-tabs">
+                    <button class="tab-btn active" onclick="switchTab('ingredients')">Ingredients</button>
+                    <button class="tab-btn" onclick="switchTab('macros')">Macros</button>
+                    <button class="tab-btn" onclick="switchTab('vitamins')">Vitamins</button>
+                    <button class="tab-btn" onclick="switchTab('minerals')">Minerals</button>
+                </div>
+                
+                <!-- Ingredients Tab -->
+                <section id="ingredients-tab" class="tab-content active">
+                    <div class="ingredients-section" id="ingredients-section"></div>
+                </section>
+                
+                <!-- Macros Tab -->
+                <section id="macros-tab" class="tab-content">
+                    <div class="macros-section" id="macros-section"></div>
+                </section>
+                
+                <!-- Vitamins Tab -->
+                <section id="vitamins-tab" class="tab-content">
+                    <div class="vitamins-section" id="vitamins-section">
+                        <div class="nutrient-grid" id="vitamins-grid"></div>
+                    </div>
+                </section>
+                
+                <!-- Minerals Tab -->
+                <section id="minerals-tab" class="tab-content">
+                    <div class="minerals-section" id="minerals-section">
+                        <div class="nutrient-grid" id="minerals-grid"></div>
+                    </div>
+                </section>
+                
+                <!-- Healthy Alternatives -->
+                <section class="alternatives-section" id="alternatives-section"></section>
+                
+                <!-- Reviews Section -->
+                <section class="reviews-section" id="reviews-section"></section>
+                
+                <!-- Related Articles -->
+                <section class="related-articles" id="related-articles"></section>
+                
+                <!-- Premium Lock (if not premium) -->
+                <div id="premium-lock" class="premium-lock" style="display: none;">
+                    <div class="lock-content">
+                        <span class="lock-icon">🔒</span>
+                        <h3>Premium Feature</h3>
+                        <p>Upgrade to see 84+ micronutrients, detailed analysis, and PDF reports</p>
+                        <a href="/premium" class="btn-primary">Upgrade for $9.99/month</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer id="footer" class="footer"></footer>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>
