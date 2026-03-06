@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="category-title">Category - USA Food Scanner</title>
-    <meta name="description" id="category-description" content="Browse products by category with health scores and micronutrients">
+    <meta name="description" id="category-description" content="Browse products by category with health scores">
     <link rel="canonical" href="" id="canonical-url">
     
     <!-- PWA -->
@@ -17,17 +17,7 @@
 </head>
 <body>
     <div id="app">
-        <header class="glass-header" id="header">
-            <div class="logo">
-                <span class="logo-icon">🍏</span>
-                <span class="logo-text">FoodScan</span>
-            </div>
-            <nav class="desktop-nav" id="desktop-nav"></nav>
-            <div class="header-right">
-                <div id="user-menu" class="user-menu"></div>
-                <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
-            </div>
-        </header>
+        <header class="glass-header" id="header"></header>
         <div class="mobile-nav" id="mobile-nav"></div>
 
         <main id="main-content">
@@ -45,10 +35,10 @@
                     </select>
                     
                     <div class="score-filters">
-                        <button class="filter-btn active" data-score="all">All</button>
-                        <button class="filter-btn" data-score="healthy">Healthy (80+)</button>
-                        <button class="filter-btn" data-score="medium">Medium (40-79)</button>
-                        <button class="filter-btn" data-score="low">Low (0-39)</button>
+                        <button class="filter-btn active" data-score="all" onclick="filterByScore('all')">All</button>
+                        <button class="filter-btn" data-score="healthy" onclick="filterByScore('healthy')">Healthy (80+)</button>
+                        <button class="filter-btn" data-score="medium" onclick="filterByScore('medium')">Medium (40-79)</button>
+                        <button class="filter-btn" data-score="low" onclick="filterByScore('low')">Low (0-39)</button>
                     </div>
                 </div>
                 
