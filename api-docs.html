@@ -14,22 +14,13 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/mobile.css">
     
-    <!-- Prism.js for code highlighting -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <!-- Highlight.js for code blocks -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 </head>
 <body>
     <div id="app">
-        <header class="glass-header" id="header">
-            <div class="logo">
-                <span class="logo-icon">🍏</span>
-                <span class="logo-text">FoodScan</span>
-            </div>
-            <nav class="desktop-nav" id="desktop-nav"></nav>
-            <div class="header-right">
-                <div id="user-menu" class="user-menu"></div>
-                <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
-            </div>
-        </header>
+        <header class="glass-header" id="header"></header>
         <div class="mobile-nav" id="mobile-nav"></div>
 
         <main id="main-content">
@@ -39,41 +30,7 @@
                 <!-- API Plans -->
                 <section class="api-plans">
                     <h2>API Plans</h2>
-                    <div id="api-plans-grid" class="plans-grid">
-                        <div class="plan-card">
-                            <div class="plan-name">Basic</div>
-                            <div class="plan-price">$49<span>/month</span></div>
-                            <ul class="plan-features">
-                                <li>10,000 calls/month</li>
-                                <li>Basic product data</li>
-                                <li>Email support</li>
-                            </ul>
-                            <button class="btn-primary btn-block" onclick="buyPlan('basic')">Get API Key</button>
-                        </div>
-                        <div class="plan-card popular">
-                            <div class="popular-badge">Most Popular</div>
-                            <div class="plan-name">Pro</div>
-                            <div class="plan-price">$199<span>/month</span></div>
-                            <ul class="plan-features">
-                                <li>100,000 calls/month</li>
-                                <li>Detailed analysis</li>
-                                <li>84+ micronutrients</li>
-                                <li>Priority support</li>
-                            </ul>
-                            <button class="btn-primary btn-block" onclick="buyPlan('pro')">Get API Key</button>
-                        </div>
-                        <div class="plan-card">
-                            <div class="plan-name">Enterprise</div>
-                            <div class="plan-price">$999<span>/month</span></div>
-                            <ul class="plan-features">
-                                <li>1,000,000 calls/month</li>
-                                <li>Full access</li>
-                                <li>Custom reports</li>
-                                <li>24/7 support</li>
-                            </ul>
-                            <button class="btn-primary btn-block" onclick="buyPlan('enterprise')">Contact Sales</button>
-                        </div>
-                    </div>
+                    <div id="api-plans-grid" class="plans-grid"></div>
                 </section>
                 
                 <!-- Authentication -->
@@ -81,18 +38,13 @@
                     <h2>Authentication</h2>
                     <div class="api-card">
                         <h3>Headers</h3>
-                        <p>All API requests require an API key in the header:</p>
-                        <pre><code class="language-json">{
+                        <pre><code class="language-json">
+{
     "x-api-key": "YOUR_API_KEY",
     "Content-Type": "application/json"
-}</code></pre>
+}
+                        </code></pre>
                     </div>
-                </section>
-                
-                <!-- Base URL -->
-                <section class="api-section">
-                    <h2>Base URL</h2>
-                    <pre><code class="language-bash">https://api.usafoodscanner.com/v1</code></pre>
                 </section>
                 
                 <!-- Endpoints -->
@@ -100,14 +52,11 @@
                     <h2>Endpoints</h2>
                     
                     <div class="endpoint">
-                        <h3><span class="method get">GET</span> /product?barcode={barcode}</h3>
+                        <h3><span class="method get">GET</span> /api/product?barcode={barcode}</h3>
                         <p>Get detailed product information by barcode</p>
-                        <h4>Parameters:</h4>
-                        <ul>
-                            <li><code>barcode</code> (required) - 12-digit UPC barcode</li>
-                        </ul>
-                        <h4>Response:</h4>
-                        <pre><code class="language-json">{
+                        <h4>Example Response:</h4>
+                        <pre><code class="language-json">
+{
     "barcode": "0123456789012",
     "name": "Lay's Classic Chips",
     "brand": "Lay's",
@@ -117,126 +66,42 @@
         {"name": "Potatoes", "is_healthy": true},
         {"name": "Salt", "is_healthy": false}
     ],
-    "macros": {
+    "nutrition": {
         "calories": 160,
-        "protein": 2,
-        "carbs": 15,
-        "fat": 10
+        "fat": 10,
+        "sodium": 170,
+        "carbs": 15
     },
     "micronutrients": {
         "vitamin_a": 0,
-        "vitamin_c": 15,
-        "calcium": 20,
+        "vitamin_c": 0,
+        "calcium": 10,
         "iron": 0.5
     }
-}</code></pre>
+}
+                        </code></pre>
                     </div>
                     
                     <div class="endpoint">
-                        <h3><span class="method get">GET</span> /search?q={query}&type={type}&limit={limit}</h3>
+                        <h3><span class="method get">GET</span> /api/search?q={query}&type={type}</h3>
                         <p>Search products, categories, or ingredients</p>
                         <h4>Parameters:</h4>
                         <ul>
-                            <li><code>q</code> (required) - Search query</li>
-                            <li><code>type</code> (optional) - all/products/categories/ingredients/blog (default: all)</li>
-                            <li><code>limit</code> (optional) - Results per page (default: 20, max: 100)</li>
+                            <li><code>q</code> - search query (required)</li>
+                            <li><code>type</code> - all, products, categories, ingredients, blog (optional, default: all)</li>
+                            <li><code>limit</code> - number of results (optional, default: 20)</li>
                         </ul>
                     </div>
                     
                     <div class="endpoint">
-                        <h3><span class="method get">GET</span> /alternatives?barcode={barcode}</h3>
+                        <h3><span class="method get">GET</span> /api/alternatives?barcode={barcode}</h3>
                         <p>Get healthier alternatives for a product</p>
                     </div>
                     
                     <div class="endpoint">
-                        <h3><span class="method get">GET</span> /micronutrients?barcode={barcode}</h3>
-                        <p>Get detailed micronutrient data (84+ nutrients)</p>
+                        <h3><span class="method get">GET</span> /api/micronutrients?barcode={barcode}</h3>
+                        <p>Get detailed vitamin and mineral information</p>
                     </div>
                     
                     <div class="endpoint">
-                        <h3><span class="method post">POST</span> /scan</h3>
-                        <p>Track a product scan (for analytics)</p>
-                        <h4>Request Body:</h4>
-                        <pre><code class="language-json">{
-    "barcode": "0123456789012",
-    "user_id": "user_123"
-}</code></pre>
-                    </div>
-                </section>
-                
-                <!-- Rate Limits -->
-                <section class="api-section">
-                    <h2>Rate Limits</h2>
-                    <table class="limits-table">
-                        <tr>
-                            <th>Plan</th>
-                            <th>Calls per month</th>
-                            <th>Calls per second</th>
-                        </tr>
-                        <tr>
-                            <td>Basic</td>
-                            <td>10,000</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>Pro</td>
-                            <td>100,000</td>
-                            <td>20</td>
-                        </tr>
-                        <tr>
-                            <td>Enterprise</td>
-                            <td>1,000,000</td>
-                            <td>100</td>
-                        </tr>
-                    </table>
-                </section>
-                
-                <!-- SDKs -->
-                <section class="api-section">
-                    <h2>SDKs</h2>
-                    <div class="sdk-grid">
-                        <div class="sdk-card">
-                            <h3>JavaScript</h3>
-                            <pre><code class="language-bash">npm install usafoodscanner-sdk</code></pre>
-                        </div>
-                        <div class="sdk-card">
-                            <h3>Python</h3>
-                            <pre><code class="language-bash">pip install usafoodscanner</code></pre>
-                        </div>
-                        <div class="sdk-card">
-                            <h3>Ruby</h3>
-                            <pre><code class="language-bash">gem install usafoodscanner</code></pre>
-                        </div>
-                    </div>
-                </section>
-                
-                <!-- Pricing Calculator -->
-                <section class="api-section">
-                    <h2>Pricing Calculator</h2>
-                    <div class="calculator">
-                        <label>Calls per month:</label>
-                        <input type="number" id="api-calls" value="10000" min="1000" step="1000">
-                        <div id="price-display" class="price-display">Estimated Price: $49/month</div>
-                    </div>
-                </section>
-                
-                <!-- Get API Key -->
-                <section class="cta-section">
-                    <h2>Ready to get started?</h2>
-                    <p>Get your API key today and start integrating</p>
-                    <a href="/premium?plan=business" class="btn-primary">Get API Key →</a>
-                </section>
-            </div>
-        </main>
-
-        <footer id="footer" class="footer"></footer>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
-    <script src="/js/api.js"></script>
-    <script src="/js/auth.js"></script>
-    <script src="/js/app.js"></script>
-</body>
-</html>
+                        <h3><span class="method get">GET</span> /api/adaptive-calories?
