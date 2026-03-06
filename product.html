@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="product-title">Product Details - USA Food Scanner</title>
-    <meta name="description" id="product-description" content="Check product health score, ingredients, and 84+ micronutrients">
+    <meta name="description" id="product-description" content="Check product health score, ingredients, and nutrition facts">
     <link rel="canonical" href="" id="canonical-url">
     
     <!-- Open Graph -->
@@ -24,17 +24,7 @@
 </head>
 <body>
     <div id="app">
-        <header class="glass-header" id="header">
-            <div class="logo">
-                <span class="logo-icon">🍏</span>
-                <span class="logo-text">FoodScan</span>
-            </div>
-            <nav class="desktop-nav" id="desktop-nav"></nav>
-            <div class="header-right">
-                <div id="user-menu" class="user-menu"></div>
-                <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
-            </div>
-        </header>
+        <header class="glass-header" id="header"></header>
         <div class="mobile-nav" id="mobile-nav"></div>
 
         <main id="main-content">
@@ -45,47 +35,26 @@
                 <!-- Product Header -->
                 <div class="product-header" id="product-header"></div>
                 
-                <!-- Product Actions -->
-                <div class="product-actions-bar">
-                    <button class="btn-wishlist" onclick="toggleWishlist()">
-                        ♥ Add to Wishlist
-                    </button>
-                    <button class="btn-compare" onclick="addToCompare()">
-                        ⇄ Compare
-                    </button>
-                    <button class="btn-share" onclick="shareProduct()">
-                        📤 Share
-                    </button>
-                </div>
+                <!-- Ingredients Section -->
+                <section class="ingredients-section" id="ingredients-section"></section>
                 
-                <!-- Tabs -->
-                <div class="product-tabs">
-                    <button class="tab-btn active" onclick="switchTab('ingredients')">Ingredients</button>
-                    <button class="tab-btn" onclick="switchTab('macros')">Macros</button>
-                    <button class="tab-btn" onclick="switchTab('vitamins')">Vitamins</button>
-                    <button class="tab-btn" onclick="switchTab('minerals')">Minerals</button>
-                </div>
-                
-                <!-- Ingredients Tab -->
-                <section id="ingredients-tab" class="tab-content active">
-                    <div class="ingredients-section" id="ingredients-section"></div>
-                </section>
-                
-                <!-- Macros Tab -->
-                <section id="macros-tab" class="tab-content">
-                    <div class="macros-section" id="macros-section"></div>
-                </section>
-                
-                <!-- Vitamins Tab -->
-                <section id="vitamins-tab" class="tab-content">
-                    <div class="vitamins-section" id="vitamins-section">
+                <!-- Nutrition Tabs (Macros + Micronutrients) -->
+                <section class="nutrition-tabs-section" id="nutrition-tabs-section">
+                    <div class="nutrition-tabs">
+                        <button class="tab-btn active" onclick="showTab('macros')">Macros</button>
+                        <button class="tab-btn" onclick="showTab('vitamins')">Vitamins</button>
+                        <button class="tab-btn" onclick="showTab('minerals')">Minerals</button>
+                    </div>
+                    
+                    <div id="macros-tab" class="tab-content active">
+                        <div class="nutrition-table" id="macros-table"></div>
+                    </div>
+                    
+                    <div id="vitamins-tab" class="tab-content">
                         <div class="nutrient-grid" id="vitamins-grid"></div>
                     </div>
-                </section>
-                
-                <!-- Minerals Tab -->
-                <section id="minerals-tab" class="tab-content">
-                    <div class="minerals-section" id="minerals-section">
+                    
+                    <div id="minerals-tab" class="tab-content">
                         <div class="nutrient-grid" id="minerals-grid"></div>
                     </div>
                 </section>
@@ -94,7 +63,23 @@
                 <section class="alternatives-section" id="alternatives-section"></section>
                 
                 <!-- Reviews Section -->
-                <section class="reviews-section" id="reviews-section"></section>
+                <section class="reviews-section" id="reviews-section">
+                    <h2>Customer Reviews</h2>
+                    <div id="reviews-list" class="reviews-list"></div>
+                    
+                    <div class="add-review" id="add-review">
+                        <h3>Write a Review</h3>
+                        <div class="rating-select">
+                            <span class="star" onclick="setRating(1)">★</span>
+                            <span class="star" onclick="setRating(2)">★</span>
+                            <span class="star" onclick="setRating(3)">★</span>
+                            <span class="star" onclick="setRating(4)">★</span>
+                            <span class="star" onclick="setRating(5)">★</span>
+                        </div>
+                        <textarea id="review-text" placeholder="Share your thoughts..." rows="4"></textarea>
+                        <button onclick="submitReview()" class="btn-primary">Submit Review</button>
+                    </div>
+                </section>
                 
                 <!-- Related Articles -->
                 <section class="related-articles" id="related-articles"></section>
@@ -104,7 +89,7 @@
                     <div class="lock-content">
                         <span class="lock-icon">🔒</span>
                         <h3>Premium Feature</h3>
-                        <p>Upgrade to see 84+ micronutrients, detailed analysis, and PDF reports</p>
+                        <p>Upgrade to see detailed nutrition analysis, buy links, and PDF reports</p>
                         <a href="/premium" class="btn-primary">Upgrade for $9.99/month</a>
                     </div>
                 </div>
