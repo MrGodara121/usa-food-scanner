@@ -1,16 +1,16 @@
 // USA Food Scanner – Authentication Client
 
-// Initialize Appwrite
 const APPWRITE_ENDPOINT = 'https://cloud.appwrite.io/v1';
 const APPWRITE_PROJECT_ID = window.APPWRITE_PROJECT_ID || '';
 
-const { Client, Account } = window.Appwrite;
-
-const client = new Client()
+// Initialize Appwrite
+const client = new Appwrite.Client();
+client
     .setEndpoint(APPWRITE_ENDPOINT)
     .setProject(APPWRITE_PROJECT_ID);
 
-const account = new Account(client);
+const account = new Appwrite.Account(client);
+const databases = new Appwrite.Databases(client);
 
 export const auth = {
     // Get current user
@@ -27,20 +27,23 @@ export const auth = {
     async login(email, password) {
         try {
             await account.createEmailSession(email, password);
-            return { success: true };
+            const user = await account.get();
+            return { success: true, user };
         } catch (error) {
-            console.error('Login error:', error);
             return { success: false, error: error.message };
         }
     },
     
     // Login with Google
-    loginWithGoogle() {
-        account.createOAuth2Session(
-            'google',
-            `${window.location.origin}/dashboard`,
-            `${window.location.origin}/login`
-        );
+    async loginWithGoogle() {
+        try {
+            account.createOAuth2Session('google', 
+                `${window.location.origin}/dashboard`,
+                `${window.location.origin}/login`
+            );
+        } catch (error) {
+            console.error('Google login failed:', error);
+        }
     },
     
     // Register new user
@@ -48,9 +51,25 @@ export const auth = {
         try {
             await account.create('unique()', email, password, name);
             await account.createEmailSession(email, password);
-            return { success: true };
+            
+            // Create user profile in database
+            const user = await account.get();
+            await databases.createDocument(
+                'usa_food_scanner_db',
+                'users',
+                'unique()',
+                {
+                    userId: user.$id,
+                    email,
+                    name,
+                    subscription_status: 'free',
+                    scan_count: 0,
+                    created_at: new Date().toISOString()
+                }
+            );
+            
+            return { success: true, user };
         } catch (error) {
-            console.error('Registration error:', error);
             return { success: false, error: error.message };
         }
     },
@@ -61,69 +80,125 @@ export const auth = {
             await account.deleteSession('current');
             return true;
         } catch (error) {
-            console.error('Logout error:', error);
+            console.error('Logout failed:', error);
             return false;
         }
     },
     
-    // Delete account
-    async deleteAccount() {
+    // Update user profile
+    async updateProfile(userId, data) {
         try {
-            await account.delete();
-            return true;
+            const result = await databases.updateDocument(
+                'usa_food_scanner_db',
+                'users',
+                userId,
+                data
+            );
+            return { success: true, user: result };
         } catch (error) {
-            console.error('Delete account error:', error);
-            return false;
-        }
-    },
-    
-    // Update password
-    async updatePassword(oldPassword, newPassword) {
-        try {
-            await account.updatePassword(newPassword, oldPassword);
-            return { success: true };
-        } catch (error) {
-            console.error('Update password error:', error);
             return { success: false, error: error.message };
         }
     },
     
-    // Request password reset
-    async requestPasswordReset(email) {
+    // Update subscription status
+    async updateSubscription(userId, status, stripeCustomerId) {
         try {
-            await account.createRecovery(
-                email,
+            const result = await databases.updateDocument(
+                'usa_food_scanner_db',
+                'users',
+                userId,
+                {
+                    subscription_status: status,
+                    stripe_customer_id: stripeCustomerId,
+                    updated_at: new Date().toISOString()
+                }
+            );
+            return { success: true };
+        } catch (error) {
+            return { success: false, error: error.message };
+        }
+    },
+    
+    // Increment scan count
+    async incrementScanCount(userId) {
+        try {
+            const user = await databases.getDocument(
+                'usa_food_scanner_db',
+                'users',
+                userId
+            );
+            
+            await databases.updateDocument(
+                'usa_food_scanner_db',
+                'users',
+                userId,
+                {
+                    scan_count: (user.scan_count || 0) + 1,
+                    last_scan: new Date().toISOString()
+                }
+            );
+        } catch (error) {
+            console.error('Failed to increment scan count:', error);
+        }
+    },
+    
+    // Get user profile
+    async getUserProfile(userId) {
+        try {
+            const user = await databases.getDocument(
+                'usa_food_scanner_db',
+                'users',
+                userId
+            );
+            return user;
+        } catch (error) {
+            return null;
+        }
+    },
+    
+    // Check if user is premium
+    async isPremium(userId) {
+        const user = await this.getUserProfile(userId);
+        return user?.subscription_status !== 'free';
+    },
+    
+    // Handle password reset
+    async resetPassword(email) {
+        try {
+            await account.createRecovery(email, 
                 `${window.location.origin}/reset-password`
             );
             return { success: true };
         } catch (error) {
-            console.error('Password reset error:', error);
             return { success: false, error: error.message };
         }
     },
     
-    // Complete password reset
-    async completePasswordReset(userId, secret, newPassword) {
+    // Update password
+    async updatePassword(userId, oldPassword, newPassword) {
         try {
-            await account.updateRecovery(userId, secret, newPassword);
+            await account.updatePassword(newPassword, oldPassword);
             return { success: true };
         } catch (error) {
-            console.error('Complete password reset error:', error);
             return { success: false, error: error.message };
         }
     },
     
-    // Update user preferences
-    async updatePreferences(preferences) {
+    // Delete account
+    async deleteAccount(userId) {
         try {
-            const user = await account.get();
-            const updated = await account.updatePrefs({
-                ...user.prefs,
-                ...preferences
-            });
-            return { success: true, prefs: updated };
+            // Delete user from database
+            await databases.deleteDocument(
+                'usa_food_scanner_db',
+                'users',
+                userId
+            );
+            
+            // Delete from Appwrite auth
+            await account.delete();
+            
+            return { success: true };
         } catch (error) {
-            console.error('Update preferences error:', error);
             return { success: false, error: error.message };
         }
     }
