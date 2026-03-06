@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>USA Food Scanner – America's Most Trusted Food Scanner</title>
-    <meta name="description" content="Scan any food product, get instant health analysis based on FDA & USDA data. 100% accurate, real-time recalls, AI photo scan, voice search, and personalized recommendations.">
-    <meta name="keywords" content="food scanner, nutrition tracker, FDA data, USDA data, healthy eating, calorie counter, AI scan, voice search">
+    <meta name="description" content="Scan any food product, get instant health analysis based on FDA & USDA data. 100% accurate, real-time recalls, and personalized recommendations.">
+    <meta name="keywords" content="food scanner, nutrition tracker, FDA data, USDA data, healthy eating, calorie counter">
     <meta name="author" content="USA Food Scanner">
     <link rel="canonical" href="https://usafoodscanner.com/">
     
     <!-- Open Graph / Social Media -->
     <meta property="og:title" content="USA Food Scanner – America's Most Trusted Food Scanner">
-    <meta property="og:description" content="Scan any food product, get instant health analysis based on FDA & USDA data. AI photo scan, voice search, and 84+ micronutrients tracking.">
-    <meta property="og:image" content="images/og-image.jpg">
+    <meta property="og:description" content="Scan any food product, get instant health analysis based on FDA & USDA data.">
+    <meta property="og:image" content="/images/og-image.jpg">
     <meta property="og:url" content="https://usafoodscanner.com/">
     <meta property="og:type" content="website">
     
@@ -20,31 +20,30 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="USA Food Scanner – Most Trusted Food Scanner">
     <meta name="twitter:description" content="Scan any food product, get instant health analysis based on FDA & USDA data.">
-    <meta name="twitter:image" content="images/twitter-image.jpg">
+    <meta name="twitter:image" content="/images/twitter-image.jpg">
     
     <!-- PWA -->
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#4CAF50">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="FoodScan">
     
-    <!-- CSS – बिना / के -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/mobile.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/mobile.css">
 </head>
 <body>
     <div id="app">
         <!-- Header Section (Dynamic) -->
         <header class="glass-header" id="header">
             <div class="logo">
-                <span class="logo-icon">🍏</span>
-                <span class="logo-text">FoodScan</span>
+                <a href="/" class="logo-link">🍏 <span class="logo-text">FoodScan</span></a>
             </div>
             <nav class="desktop-nav" id="desktop-nav"></nav>
             <div class="header-right">
                 <div id="user-menu" class="user-menu"></div>
-                <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">☰</button>
             </div>
         </header>
         
@@ -56,20 +55,16 @@
             <!-- Hero Section -->
             <section class="hero">
                 <h1 class="animate-title">America's Most Trusted Food Scanner</h1>
-                <p class="animate-subtitle">Scan any food product, get instant health analysis based on <strong>FDA & USDA</strong> official data with <strong>AI photo scan</strong> and <strong>voice search</strong></p>
+                <p class="animate-subtitle">Scan any food product, get instant health analysis based on <strong>FDA & USDA</strong> official data</p>
                 
                 <div class="hero-actions">
                     <button onclick="startScan()" class="btn-primary btn-large">
                         <span class="btn-icon">📸</span>
-                        Scan Barcode
+                        Start Scanning
                     </button>
-                    <button onclick="startAIScan()" class="btn-primary btn-large">
-                        <span class="btn-icon">🤖</span>
-                        AI Photo Scan
-                    </button>
-                    <a href="search.html" class="btn-secondary btn-large">
+                    <a href="/search" class="btn-secondary btn-large">
                         <span class="btn-icon">🔍</span>
-                        Search
+                        Search Products
                     </a>
                 </div>
                 
@@ -90,14 +85,6 @@
                     <div class="badge">
                         <span class="badge-icon">⭐</span>
                         <span class="badge-text">10M+ Trusted Users</span>
-                    </div>
-                    <div class="badge">
-                        <span class="badge-icon">🤖</span>
-                        <span class="badge-text">AI Photo Scan</span>
-                    </div>
-                    <div class="badge">
-                        <span class="badge-icon">🎤</span>
-                        <span class="badge-text">Voice Search</span>
                     </div>
                 </div>
             </section>
@@ -123,46 +110,18 @@
                 <div id="challenge-card" class="challenge-card"></div>
             </section>
 
-            <!-- AI Scan Demo -->
-            <section class="ai-demo-section">
-                <h2>🤖 Try AI Photo Scan</h2>
-                <div class="ai-demo-card">
-                    <div class="ai-demo-content">
-                        <p>Just take a photo of any food product, and our AI will identify it instantly!</p>
-                        <button onclick="startAIScan()" class="btn-primary">
-                            📸 Try AI Scan Now
-                        </button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Voice Search Demo -->
-            <section class="voice-demo-section">
-                <h2>🎤 Voice Search</h2>
-                <div class="voice-demo-card">
-                    <div class="voice-demo-content">
-                        <p>Say "chips" or "diet coke" and we'll find it for you!</p>
-                        <button onclick="startVoiceSearch()" class="btn-primary">
-                            🎤 Start Voice Search
-                        </button>
-                    </div>
-                </div>
-            </section>
-
             <!-- CTA Section -->
             <section class="cta-section">
                 <div class="cta-content">
                     <h2>Unlock Premium Features</h2>
-                    <p>Get unlimited scans, detailed analysis, 84+ micronutrients, PDF reports, adaptive algorithm, and personalized coaching</p>
+                    <p>Get unlimited scans, detailed analysis, PDF reports, and personalized recommendations</p>
                     <div class="cta-features">
                         <span>✓ Unlimited Scans</span>
-                        <span>✓ 84+ Micronutrients</span>
-                        <span>✓ Adaptive Algorithm</span>
-                        <span>✓ AI Photo Scan</span>
-                        <span>✓ Voice Search</span>
-                        <span>✓ Weekly Coaching</span>
+                        <span>✓ No Ads</span>
+                        <span>✓ PDF Reports</span>
+                        <span>✓ Priority Support</span>
                     </div>
-                    <a href="premium.html" class="btn-primary btn-large">View Plans →</a>
+                    <a href="/premium" class="btn-primary btn-large">View Plans →</a>
                 </div>
             </section>
         </main>
@@ -171,24 +130,16 @@
         <footer id="footer" class="footer"></footer>
     </div>
 
-    <!-- Toast Notification Container -->
-    <div id="toast" class="toast"></div>
-
-    <!-- Notification Prompt -->
-    <div id="notification-prompt" class="notification-prompt" style="display: none;">
-        <div class="prompt-content">
-            <span class="prompt-icon">🔔</span>
-            <p>Get real-time FDA recall alerts</p>
-            <div class="prompt-actions">
-                <button onclick="enableNotifications()" class="btn-small">Enable</button>
-                <button onclick="closeNotificationPrompt()" class="btn-small btn-secondary">Later</button>
-            </div>
-        </div>
+    <!-- Notification Permission Prompt -->
+    <div id="notification-prompt" class="glass-card notification-prompt" style="display: none;">
+        <p>🔔 Get real-time FDA recall alerts</p>
+        <button onclick="enableNotifications()" class="btn-primary btn-small">Enable</button>
+        <button onclick="closePrompt()" class="btn-secondary btn-small">Not Now</button>
     </div>
 
-    <!-- JavaScript – बिना / के और सही क्रम में -->
-    <script src="js/api.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/app.js"></script>
+    <!-- JavaScript -->
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/app.js"></script>
 </body>
 </html>
