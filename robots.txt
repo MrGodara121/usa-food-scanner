@@ -4,25 +4,17 @@ Allow: /
 Disallow: /dashboard/
 Disallow: /login/
 Disallow: /api/
-Disallow: /admin/
 Disallow: /private/
 
 # Allow specific bots
 User-agent: Googlebot
 Allow: /
-Disallow: /dashboard/
-Disallow: /login/
 
 User-agent: Bingbot
 Allow: /
-Disallow: /dashboard/
-Disallow: /login/
-
-# Sitemap
-Sitemap: https://usafoodscanner.com/sitemap.xml
 
 # Crawl delay for slower bots
 Crawl-delay: 1
 
-# Host
-Host: https://usafoodscanner.com
+# Sitemap
+Sitemap: https://usafoodscanner.com/sitemap.xml
